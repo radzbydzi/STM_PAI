@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Dodaj zadanie</title>
+</head>
+<body>
+	<h2>Dodaj zadanie</h2>
+	<form th:action="@{/web/task/add}" th:method="post" th:object="${task}">
+        <input th:type="text" th:field="*{title}" th:placeholder="'Tytuł'"><br>
+        <input th:type="text" th:field="*{description}" th:placeholder="'Opis'"><br>
+        TaskType<br>
+        <select th:name="type" style="width:100%">
+			<option  th:each="t : ${tasktypes}" th:value="${t}" th:text="${t.name()}">
+			</option>
+		</select><br>
+		TaskStatus<br>
+		<select th:name="status" style="width:100%">
+			<option  th:each="t : ${taskstatuses}" th:value="${t}" th:text="${t.name()}">
+			</option>
+		</select><br>
+		User<br>
+		<select th:name="userToTask" style="width:100%">
+			<option th:each="us : ${usr}" th:value="${us.userId}" th:text="${us.name} + ' '+ ${us.lastName}">
+			</option>
+		</select><br>
+        <input th:type="submit" th:value="Dodaj">
+    </form>
+</body>
+</html>

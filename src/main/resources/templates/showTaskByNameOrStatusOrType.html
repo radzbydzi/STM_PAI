@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Pokaż taski</title>
+</head>
+<body>
+	<h2>Pokaż zadania po nazwie/statusie/typie</h2>
+	
+	<div>
+	   <form th:action="@{/web/task/showByNameStatusType}" th:method="get">
+        <input th:type="text" th:name="pasedValue" th:placeholder="'nazwa, stus lub typ'"><br>
+        <input th:type="submit" th:value="Szukaj">
+    </form>
+	</div>
+	<div th:if="${tasks != null}">
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Tytuł</th>
+				<th>Opis</th>
+				<th>Dodano</th>
+				<th>Typ</th>
+				<th>Status</th>
+				<th>Użytkownik</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="task : ${tasks}">
+				<td th:text="${task.taskId}">Id</td>
+				<td th:text="${task.title}">Tytuł</td>
+				<td th:text="${task.description}">Opis</td>
+				<th th:text="${task.dateAdded}">Dodano</td>
+				<td th:text="${task.type}">Typ</td>
+				<td th:text="${task.status}">Status</td>
+				<td th:text="${task.user.name}+' '+${task.user.lastName}">Użytkownik</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+</body>
+</html>

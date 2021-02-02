@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Zmien status zadania</title>
+</head>
+<body>
+	<h2>Zmien status zadania</h2>
+	
+	<div>
+	   <form th:action="@{/web/task/changeTaskStatus}" th:method="get">
+	   Zadanie:<br>
+        <select th:name="taskId" style="width:100%">
+			<option  th:each="t : ${tasks}" th:value="${t.taskId}" th:text="${t.title}">
+			</option>
+		</select><br>
+		Nowy status:<br>
+        <select th:name="status" style="width:100%">
+			<option  th:each="t : ${taskstatuses}" th:value="${t.name()}" th:text="${t.name()}">
+			</option>
+		</select><br>
+        <input th:type="submit" value="Zmien status">
+    	</form>
+	</div>
+</body>
+</html>

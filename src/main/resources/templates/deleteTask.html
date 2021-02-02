@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Usuń zadanie</title>
+</head>
+<body>
+	<h2>Usuń zadanie</h2>
+	
+	<div>
+	   <form th:action="@{/web/task/delete}" th:method="get">
+        <select th:name="taskId" style="width:100%">
+			<option  th:each="t : ${tasks}" th:value="${t.taskId}" th:text="${t.title}">
+			</option>
+		</select><br>
+        <input th:type="submit" value="Usuń">
+    	</form>
+	</div>
+</body>
+</html>

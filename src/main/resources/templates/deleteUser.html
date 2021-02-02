@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Usuń użytkownika</title>
+</head>
+<body>
+	<h2>Usuń użytkownika</h2>
+	
+	<div>
+	   <form th:action="@{/web/user/delete}" th:method="get">
+        <select th:name="userId" style="width:100%">
+			<option  th:each="user : ${users}" th:value="${user.userId}" th:text="${user.name} + ' ' + ${user.lastName}">
+			</option>
+		</select><br>
+        <input th:type="submit" value="Usuń">
+    	</form>
+	</div>
+</body>
+</html>

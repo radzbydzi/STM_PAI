@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Dodaj użytkownika</title>
+</head>
+<body>
+	<h2>Dodaj użytkownika</h2>
+	<form th:action="@{/web/user/add}" th:method="post" th:object="${user}">
+        <input th:type="text" th:field="*{name}" th:placeholder="'Imię'"><br>
+        <input th:type="text" th:field="*{lastName}" th:placeholder="'Nazwisko'"><br>
+        <input th:type="email" th:field="*{email}" th:placeholder="'Email'"><br>
+        <input th:type="password" th:field="*{password}" th:placeholder="'Hasło'"><br>
+        <input th:type="submit" th:value="Dodaj">
+    </form>
+</body>
+</html>

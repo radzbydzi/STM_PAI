@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Pokaż wszystkich</title>
+</head>
+<body>
+	<h2>Znajdz użytkownika po kluczu głównym lub emailu</h2>
+	
+	<div>
+	   <form th:action="@{/web/user/showByPKOrEmail}" th:method="get">
+        <input th:type="text" th:name="pasedValue" th:placeholder="'PK lub email'"><br>
+        <input th:type="submit" th:value="Szukaj">
+    </form>
+	</div>
+	<div th:if="${user != null}">
+	   <table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Imię</th>
+				<th>Nazwisko</th>
+				<th>Email</th>
+				<th>Status</th>
+				<th>Data rejestracji</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td th:text="${user.userId}">Id</td>
+				<td th:text="${user.name}">Imię</td>
+				<td th:text="${user.lastName}">Nazwisko</td>
+				<th th:text="${user.email}">Email</td>
+				<td th:text="${user.status}">Status</td>
+				<td th:text="${user.registrationDateTime}">Data rejestracji</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+</body>
+</html>
